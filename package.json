@@ -1,9 +1,11 @@
 {
-  "name": "my-widget",
-  "version": "0.1.0",
-  "private": true,
+  "name": "fin-widget",
+  "version": "1.0.2",
+  "description": "A financial widget to display stock data",
+  "main": "widget/index.js",       
+  "style": "widget/index.css",
   "dependencies": {
-    "@craco/craco": "^6.1.0",
+    "@craco/craco": "^7.0.0",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -14,16 +16,15 @@
     "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "eject": "react-scripts eject",
-    "start": "craco start",
+    "start": "craco start --openssl-legacy-provider",
     "build": "craco build",
     "test": "craco test",
-    "build:widget": "parcel build src/index.js --no-source-maps -d widget && cp build/static/css/*.css widget/index.css"
+    "build:widget": "parcel build src/index.js --no-source-maps --no-minify -d widget && cp widget/*.css widget/index.css && cp widget/*.js widget/index.js"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +45,9 @@
     ]
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "react-scripts": "^5.0.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   }
 }
